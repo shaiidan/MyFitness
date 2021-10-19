@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10sp"
+    android:scrollbarSize="25sp"
+    tools:context=".UserProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/userProfileFragment_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/userProfileFragment_title_profile"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/userProfileFragment_tv_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/userProfileFragment_edit_profile"
+            android:textColor="@color/blue"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userProfileFragment_tv_title"
+            tools:ignore="MissingConstraints" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:id="@+id/userProfileFragment_frameLayout_name"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/userProfileFragment_tv_edit"
+            android:background="@drawable/frame_layout_profile"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="start"
+                android:text="@string/userProfileFragment_user_name"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/userProfileFragment_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:textSize="20sp"
+                android:enabled="false"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/userProfileFragment_frameLayout_email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/userProfileFragment_frameLayout_name"
+            android:background="@drawable/frame_layout_profile"
+            tools:ignore="MissingConstraints"
+            android:clickable="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="start"
+                android:text="@string/userProfileFragment_email_address"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/userProfileFragment_tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:enabled="false"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/userProfileFragment_frameLayout_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/userProfileFragment_frameLayout_email"
+            android:background="@drawable/frame_layout_profile"
+            tools:ignore="MissingConstraints"
+            android:clickable="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="start"
+                android:text="@string/userProfileFragment_birthday"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/userProfileFragment_tv_birthday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:enabled="false"/>
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/userProfileFragment_frameLayout_age"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/userProfileFragment_frameLayout_birthday"
+            android:background="@drawable/frame_layout_profile"
+            tools:ignore="MissingConstraints"
+            android:clickable="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="start"
+                android:text="@string/userProfileFragment_age"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/userProfileFragment_tv_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:enabled="false"/>
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/userProfileFragment_frameLayout_weight"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/userProfileFragment_frameLayout_age"
+            android:background="@drawable/frame_layout_profile"
+            tools:ignore="MissingConstraints"
+            android:clickable="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="start"
+                android:text="@string/userProfileFragment_weight"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/userProfileFragment_tv_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/black"
+                android:enabled="false"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/userProfileFragment_frameLayout_height"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/userProfileFragment_frameLayout_weight"
+            android:background="@drawable/frame_layout_profile"
+            tools:ignore="MissingConstraints"
+            android:clickable="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="start"
+                android:text="@string/userProfileFragment_height"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/userProfileFragment_tv_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/black"
+                android:enabled="false"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/userProfileFragment_frameLayout_bmi"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/userProfileFragment_frameLayout_height"
+            android:background="@drawable/frame_layout_profile"
+            tools:ignore="MissingConstraints"
+            android:clickable="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="start"
+                android:text="@string/userProfileFragment_bmi"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/userProfileFragment_tv_bmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/black"
+                android:enabled="false"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/userProfileFragment_frameLayout_target"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/userProfileFragment_frameLayout_bmi"
+            android:background="@drawable/frame_layout_profile"
+            tools:ignore="MissingConstraints"
+            android:clickable="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="start"
+                android:text="@string/userProfileFragment_target_weight"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/userProfileFragment_tv_target"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/black"
+                android:enabled="false"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/userProfileFragment_frameLayout_active"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/userProfileFragment_frameLayout_target"
+            android:background="@drawable/frame_layout_profile"
+            tools:ignore="MissingConstraints"
+            android:clickable="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="start"
+                android:text="@string/userProfileFragment_activity_level"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/userProfileFragment_tv_active"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/black"
+                android:enabled="false"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/userProfileFragment_change_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/userProfileFragment_change_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userProfileFragment_frameLayout_active"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/userProfileFragment_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/userProfileFragment_log_out"
+            android:textColor="@color/red"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userProfileFragment_change_password"
+            android:textSize="20sp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

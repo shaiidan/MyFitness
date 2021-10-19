@@ -1,0 +1,229 @@
+@startuml
+class com.example.myfitness.ImageExerciseDialog {
+~ Exercise exercise
+# void onCreate(Bundle)
+}
+class com.example.myfitness.UserHomeFragment {
+- FirebaseAuth mAuth
+- FirebaseUser currentUser
+- DatabaseReference mDatabase
+- TrainingPlanAdapter trainingPlanAdapter
+- List<Exercise> exercisesTrainingPlan
+- SharedPreferences sp
+~ TextView tvSelectAlertTime
+~ ListView lvWorkout
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void selectTimeAndNotification()
+- void showBuildWorkoutFragment()
+- void showExercisesFragment(Exercise.Type,long)
+- void getTrainingPlanByUserID()
+- void getExerciseDetails(String)
+}
+class com.example.myfitness.UserHomeFragment.TrainingPlanAdapter {
++ int getCount()
++ Object getItem(int)
++ long getItemId(int)
++ View getView(int,View,ViewGroup)
+}
+class com.example.myfitness.Model.Exercise {
+- long exerciseID
+- String exerciseName
+- String picName
+- Difficulty difficulty
+- long quantity
+- long setQuantity
+- long time
+- Type type
++ long getExerciseID()
++ void setExerciseID(long)
++ long getQuantity()
++ long getSetQuantity()
++ long getTime()
++ String getDifficulty()
++ String getExerciseName()
++ String getPicName()
++ String getType()
++ String toString()
++ boolean equals(Object)
++ int hashCode()
+}
+class com.example.myfitness.MainActivity {
+- FirebaseAuth mAuth
+- FirebaseUser currentUser
+- SharedPreferences sp
+# void onCreate(Bundle)
+}
+class com.example.myfitness.MainActivity.AuthenticationPagerAdapter {
+- ArrayList<Fragment> fragmentList
++ Fragment getItem(int)
++ int getCount()
+~ void addFragment(Fragment)
+}
+class com.example.myfitness.UserProfileFragment {
+~ TextView tvEditProfile
+- FirebaseAuth mAuth
+- FirebaseUser currentUser
+- DatabaseReference mDatabase
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void showUserDetails()
++ void onClick(View)
++ void showEditNameDialog()
++ void showChangePasswordDialog()
++ void showEditWeightDialog()
++ void showEditHeightDialog()
++ void showEditBirthdayDialog()
++ void showEditTargetWeightDialog()
++ void showEditActivityLevel()
+}
+class com.example.myfitness.ExerciseTimer {
+- CountDownTimer timer
+- TextView tvTimer
+- String finishMessage
+- long mTimeLeftInMills
+- long mTimeInMills
+- Button btnNext
++ void startTimer()
++ void pauseTimer()
++ void resetTimer()
+}
+class com.example.myfitness.FitFragment {
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+}
+class com.example.myfitness.ErrorMessageDialog {
+~ String errorMessage1
+~ ErrorMessageType goTo
+~ FragmentActivity activity
+# void onCreate(Bundle)
+}
+class com.example.myfitness.Model.FirebaseData {
++ void onCreate()
+}
+class com.example.myfitness.RegisterFragment {
+- FirebaseAuth mAuth
+- DatabaseReference mDatabase
+- SharedPreferences sp
+~ Button btnRegister
+~ EditText etName
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- boolean isFormValid()
+- void updateUI(FirebaseUser)
+}
+class com.example.myfitness.AlertNextFit {
++ void onReceive(Context,Intent)
+}
+class com.example.myfitness.ExercisesFragment {
+- Exercise.Type type
+- long exerciseID
+- List<Exercise> exercises
+- ExercisesListAdapter exercisesListAdapter
+~ ListView exercisesList
+- FirebaseAuth mAuth
+- FirebaseUser currentUser
+- DatabaseReference mDatabase
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ Exercise.Type getType()
++ void setType(Exercise.Type)
++ long getExerciseID()
++ void setExerciseID(long)
++ void goBackToUserHomeFragment()
+- void getExercisesByType()
+- void editExerciseInDB(Exercise)
+}
+class com.example.myfitness.ExercisesFragment.ExercisesListAdapter {
++ int getCount()
++ Object getItem(int)
++ long getItemId(int)
++ View getView(int,View,ViewGroup)
+}
+class com.example.myfitness.UserInActivity {
+- BottomNavigationView.OnNavigationItemSelectedListener navListener
+# void onCreate(Bundle)
+}
+class com.example.myfitness.BuildWorkoutFragment {
+- FirebaseAuth mAuth
+- FirebaseUser currentUser
+- DatabaseReference mDatabase
+- Exercise.Difficulty level
+- List<Long> trainingPlanExercises
+- Map<String,Integer> exerciseNumberByType
+~ NumberPicker npBack
+~ RadioGroup radioGroup
+~ Button btnBuild
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void buildTrainingPlan()
+- void saveTrainingPlanToDB()
++ void goBackToUserHomeFragment()
+}
+class com.example.myfitness.Model.User {
+- String birthday
+- double weight
+- double height
+- double targetWeight
+- String activityLevel
++ String getBirthday()
++ double getHeight()
++ double getTargetWeight()
++ double getWeight()
++ String getActivityLevel()
++ void setActivityLevel(String)
++ void setBirthday(String)
++ void setHeight(double)
++ void setTargetWeight(double)
++ void setWeight(double)
++ int calculateAge()
++ double calculateBmi()
+}
+class com.example.myfitness.FitShowFragment {
+- FirebaseAuth mAuth
+- FirebaseUser currentUser
+- DatabaseReference mDatabase
+- List<String> exercisesIDTrainingPlan
+- int exerciseIDTrainingPlanPosition
+- long exerciseSetQuantityNow
+- long exerciseTimerMax
+- ExerciseTimer exerciseTimer
+- String timerFinishMessage
+~ TextView tvExerciseName
+~ ImageView imvExercise
+~ Button btnNext
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onClick(View)
+- void getTrainingPlan()
+- void startShowTrainingPlan()
+- void getExerciseDetails(String)
+- void showExerciseInFirstTime(Exercise)
+}
+class com.example.myfitness.LoginFragment {
+- FirebaseAuth mAuth
+~ Button btnLogin
+~ EditText etEmail
+~ TextView tvError
+~ SharedPreferences sp
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
+- void updateUI(FirebaseUser)
+}
+
+
+android.app.AlertDialog <|-- com.example.myfitness.ImageExerciseDialog
+androidx.fragment.app.Fragment <|-- com.example.myfitness.UserHomeFragment
+com.example.myfitness.UserHomeFragment +.. com.example.myfitness.UserHomeFragment.TrainingPlanAdapter
+com.example.myfitness.BaseAdapter <|-- com.example.myfitness.UserHomeFragment.TrainingPlanAdapter
+androidx.appcompat.app.AppCompatActivity <|-- com.example.myfitness.MainActivity
+com.example.myfitness.MainActivity +.. com.example.myfitness.MainActivity.AuthenticationPagerAdapter
+com.example.myfitness.FragmentPagerAdapter <|-- com.example.myfitness.MainActivity.AuthenticationPagerAdapter
+com.example.myfitness.OnClickListener <|.. com.example.myfitness.UserProfileFragment
+androidx.fragment.app.Fragment <|-- com.example.myfitness.UserProfileFragment
+androidx.fragment.app.Fragment <|-- com.example.myfitness.FitFragment
+android.app.AlertDialog <|-- com.example.myfitness.ErrorMessageDialog
+android.app.Application <|-- com.example.myfitness.Model.FirebaseData
+androidx.fragment.app.Fragment <|-- com.example.myfitness.RegisterFragment
+android.content.BroadcastReceiver <|-- com.example.myfitness.AlertNextFit
+androidx.fragment.app.Fragment <|-- com.example.myfitness.ExercisesFragment
+com.example.myfitness.ExercisesFragment +.. com.example.myfitness.ExercisesFragment.ExercisesListAdapter
+com.example.myfitness.BaseAdapter <|-- com.example.myfitness.ExercisesFragment.ExercisesListAdapter
+androidx.appcompat.app.AppCompatActivity <|-- com.example.myfitness.UserInActivity
+androidx.fragment.app.Fragment <|-- com.example.myfitness.BuildWorkoutFragment
+com.example.myfitness.OnClickListener <|.. com.example.myfitness.FitShowFragment
+androidx.fragment.app.Fragment <|-- com.example.myfitness.FitShowFragment
+androidx.fragment.app.Fragment <|-- com.example.myfitness.LoginFragment
+@enduml
